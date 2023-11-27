@@ -1,0 +1,12 @@
+<section class="sidebar">
+    <ul class="sidebar-ul">
+        <li class="sidebar-li" *ngFor="let navItem of sidebarNavItems">
+            <app-menu-button
+                [text]="navItem"
+                [selected]="navItem === currentNavItem"
+                (click)="setCurrentNavItem(navItem)"
+            ></app-menu-button>
+        </li>
+    </ul>
+    <app-infomation></app-infomation>
+</section>

@@ -1,0 +1,12 @@
+:host {
+    .ui-button {
+        border-radius: 18px;
+        width: 120px;
+        height: 30px;
+        font-size: 16px;
+        background-color: transparent;
+    }
+    .selected {
+        background-color: #757575;
+    }
+}
