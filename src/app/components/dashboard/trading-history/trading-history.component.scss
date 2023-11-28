@@ -1,0 +1,10 @@
+.example-container.mat-elevation-z8 {
+    box-shadow: none;
+    .mat-mdc-table .mdc-data-table__header-row {
+        height: 61px;
+    }
+    .mat-mdc-table .mdc-data-table__row {
+        height: 61px;
+    }
+    border-right: 1px solid #888;
+}

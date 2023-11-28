@@ -1,4 +1,18 @@
 .chart {
     background-color: #303030;
-    height: 60vh;
+    height: 65vh;
+    width: calc(100vw - 200px);
+}
+.trading-info {
+    display: flex;
+    width: calc(100vw - 200px);
+    height: 35vh;
+    .trading-history {
+        width: 50%;
+        overflow: scroll;
+    }
+    .signal {
+        width: 50%;
+        overflow: scroll;
+    }
 }
