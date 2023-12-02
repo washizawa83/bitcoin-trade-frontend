@@ -1,4 +1,9 @@
-.example-container.mat-elevation-z8 {
-    overflow: scroll;
-    box-shadow: none;
+.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.mat-mdc-table-sticky.mat-mdc-table-sticky-border-elem-top {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.mat-mdc-cell.mdc-data-table__cell.cdk-cell {
+    text-align: center;
+    padding: 20px 0;
 }

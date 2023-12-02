@@ -1,3 +1,9 @@
 <section class="chart" #chartWrap>
-    <div class="draw-chart" #candleStickChart></div>
+    <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis"
+        [title]="chartOptions.title"
+    ></apx-chart>
 </section>

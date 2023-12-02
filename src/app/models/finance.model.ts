@@ -11,3 +11,8 @@ export type Candle = {
 }
 
 export type CandleDrawList = (Candle[keyof Candle])[];
+
+export type CandleViewModel = {
+    x: Date,
+    y: number[]
+}

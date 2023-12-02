@@ -1,8 +1,16 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { map } from 'rxjs';
-import { Candle, CandleDrawList } from 'src/app/models/finance.model';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { ApexAxisChartSeries, ApexChart, ApexPlotOptions, ApexTitleSubtitle, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
+import { CandleViewModel } from 'src/app/models/finance.model';
 import { ApiService } from 'src/app/services/api.service';
-declare var google: any;
+
+export type ChartOptions = {
+	series: ApexAxisChartSeries;
+	chart: ApexChart;
+	xaxis: ApexXAxis;
+	yaxis: ApexYAxis;
+	title: ApexTitleSubtitle;
+	plotOption?: ApexPlotOptions;
+};
 
 @Component({
   selector: 'app-chart',
@@ -10,68 +18,70 @@ declare var google: any;
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
-	@ViewChild('candleStickChart') candleStickChart!: ElementRef
-	candles: CandleDrawList[] = []
+  	chartOptions!: ChartOptions;
 
 	constructor(
-		private _apiService: ApiService
+		private _apiService: ApiService,
+		private cdr: ChangeDetectorRef
 	) {}
 
 	ngOnInit() {
-		this._apiService.getCandle$()
-		.pipe(
-			map((candles) => {
-				return candles.map((candle) => {
-					const { id, ...rest } = candle;
-					return [rest.datetime, rest.high, rest.open, rest.low, rest.close]
-				})
-			})
-		)
-		.subscribe((candles) => {
-			this.candles = candles
-		})
+		this.getCandles(true)
+		this.loadDataPeriodically()
 	}
 
-	// [datetime, high, open, low, close]
-	testData = [
-		['Mon', 50, 40, 30, 20],
-	]
-
-	drawChart = (testData: (string | number)[][]) => {
-		const data = google.visualization.arrayToDataTable(testData, true);
-	  
-		const options = {
-			backgroundColor: '#303030',
-			candlestick: {
-				fallingColor: {fill: '#FF6666', stroke: '#FF6666'},
-				risingColor: {fill: '#33FF66', stroke: '#33FF66'}
-			},
-			colors:['white'],
-			hAxis: {
-				textStyle: {
-					color: '#CCC'
-				}
-			},
-			vAxis: {
-				textStyle: {
-					color: '#CCC'
-				}
-			},
-			chartArea: {
-				width: '78%',
-				height: '80%',
-				left: 250,
-				top: 50,
-			},
-		};
-	  
-		const chart = new google.visualization.CandlestickChart(this.candleStickChart.nativeElement);
-	  
-		chart.draw(data, options);
+	getCandles(isAnimation: boolean) {
+		 this._apiService.getCandles$().subscribe((candles) => {
+			this.drawChart(candles, isAnimation)
+		 })
 	}
 
-	ngAfterViewInit() {
-		google.charts.load('current', { 'packages': ['corechart'] });
-		google.charts.setOnLoadCallback(() => this.drawChart(this.candles));
+	drawChart(candles: CandleViewModel[], isAnimation: boolean = false) {
+		this.chartOptions = {
+			series: [
+				{
+					name: "candle",
+					data: candles
+				}
+			],
+			chart: {
+				type: "candlestick",
+				height: 350,
+				animations: {enabled: isAnimation},
+			},
+			title: {
+				text: "JPY / BTC",
+				align: "left"
+			},
+			xaxis: {
+			  	type: "datetime",
+				labels: {
+					style: {
+						colors: "#AAA"
+					},
+					rotate: -30,
+					rotateAlways: true,
+					hideOverlappingLabels: true,
+					minHeight: 40
+				}
+			},
+			yaxis: {
+				tooltip: {
+					enabled: true
+				},
+				labels: {
+					style: {
+						colors: ["#AAA"]
+					}
+				}
+			},
+		}
+	}
+
+	loadDataPeriodically() {
+		setInterval(() => {
+			this.getCandles(false)
+			this.cdr.detectChanges()
+		}, 5000)
 	}
 }

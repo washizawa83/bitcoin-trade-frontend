@@ -1,35 +1,19 @@
 <section class="example-container mat-elevation-z8" tabindex="0">
-      <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="datetime">
+            <th mat-header-cell *matHeaderCellDef>日付</th>
+            <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
+        </ng-container>
+        <ng-container matColumnDef="signal">
+            <th mat-header-cell *matHeaderCellDef>シグナル</th>
+            <td mat-cell *matCellDef="let element"> {{element.signal}} </td>
+        </ng-container>
         <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> Position </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-          <td mat-footer-cell *matFooterCellDef> Position Footer </td>
+            <th mat-header-cell *matHeaderCellDef>ポジション</th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
         </ng-container>
-  
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element">{{element.name}}</td>
-          <td mat-footer-cell *matFooterCellDef> Name Footer </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef> Weight </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-          <td mat-footer-cell *matFooterCellDef> Weight Footer </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-          <td mat-footer-cell *matFooterCellDef> Symbol Footer </td>
-        </ng-container>
-  
-        <ng-container matColumnDef="filler">
-          <th mat-header-cell *matHeaderCellDef> Filler header cell </th>
-          <td mat-cell *matCellDef="let element"> Filler data cell </td>
-          <td mat-footer-cell *matFooterCellDef> Filler footer cell </td>
-        </ng-container>
-  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+    </table>
 </section>
+  

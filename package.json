@@ -20,9 +20,12 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "@swimlane/ngx-graph": "^8.2.3",
     "angular-google-charts": "^2.2.3",
+    "apexcharts": "^3.44.0",
     "igniteui-angular-charts": "^17.0.0",
     "igniteui-angular-core": "^17.0.0",
+    "ng-apexcharts": "^1.8.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

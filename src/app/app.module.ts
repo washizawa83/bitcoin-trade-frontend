@@ -15,6 +15,9 @@ import { ChartComponent } from './components/dashboard/chart/chart.component';
 import { IgxFinancialChartModule } from 'igniteui-angular-charts';
 import { TradingHistoryComponent } from './components/dashboard/trading-history/trading-history.component';
 import { SignalComponent } from './components/dashboard/signal/signal.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NumberCardComponent } from './components/ui/number-card/number-card.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { SignalComponent } from './components/dashboard/signal/signal.component'
     ChartComponent,
     TradingHistoryComponent,
     SignalComponent,
+    NumberCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { SignalComponent } from './components/dashboard/signal/signal.component'
     IgxFinancialChartModule,
     MatTableModule,
     HttpClientModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

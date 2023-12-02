@@ -23,6 +23,4 @@ export class SidebarComponent {
 	setCurrentNavItem(value: navItemTypes):void {
 		this.sidebarService.setCurrentNavItem(value)
 	}
-
-
 }
