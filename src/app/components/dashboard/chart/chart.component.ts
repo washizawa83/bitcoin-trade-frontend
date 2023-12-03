@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { ApexAxisChartSeries, ApexChart, ApexPlotOptions, ApexTitleSubtitle, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
+import { ApexAxisChartSeries, ApexChart, ApexMarkers, ApexOptions, ApexPlotOptions, ApexTitleSubtitle, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
 import { CandleViewModel } from 'src/app/models/finance.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -10,6 +10,7 @@ export type ChartOptions = {
 	yaxis: ApexYAxis;
 	title: ApexTitleSubtitle;
 	plotOption?: ApexPlotOptions;
+	markers?: ApexMarkers;
 };
 
 @Component({
@@ -48,6 +49,9 @@ export class ChartComponent {
 				type: "candlestick",
 				height: 350,
 				animations: {enabled: isAnimation},
+				zoom: {
+					enabled: false
+				}
 			},
 			title: {
 				text: "JPY / BTC",
@@ -75,6 +79,23 @@ export class ChartComponent {
 					}
 				}
 			},
+			markers: {
+				discrete: [{
+				  seriesIndex: 50,
+				  dataPointIndex: 0,
+				  fillColor: '#e3e3e3',
+				  strokeColor: '#fff',
+				  size: 50,
+				  shape: "circle" // "circle" | "square" | "rect"
+				}, {
+				  seriesIndex: 20,
+				  dataPointIndex: 0,
+				  fillColor: '#f7f4f3',
+				  strokeColor: '#eee',
+				  size: 500,
+				  shape: "circle" // "circle" | "square" | "rect"
+				}]
+			}
 		}
 	}
 

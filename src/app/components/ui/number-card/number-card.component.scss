@@ -1,0 +1,20 @@
+.number-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #313237;
+    height: 70px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    .number-card-value {
+        color: white;
+        font-size: 28px;
+        font-weight: 300;
+    }
+    .card-name {
+        color: #CCC;
+        font-size: 14px;
+    }
+}
