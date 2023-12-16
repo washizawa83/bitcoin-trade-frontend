@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./number-card.component.scss']
 })
 export class NumberCardComponent {
-  	@Input() value!: string
-	@Input() name!: string
-	@Input() color: string = "#469900"
+    @Input() value!: string
+    @Input() name!: string
+    @Input() color: string = "#469900"
 }

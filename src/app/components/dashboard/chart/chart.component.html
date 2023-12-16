@@ -1,9 +1,15 @@
 <section class="chart" #chartWrap>
-    <apx-chart
+    <!-- <apx-chart
         [series]="chartOptions.series"
         [chart]="chartOptions.chart"
         [xaxis]="chartOptions.xaxis"
         [yaxis]="chartOptions.yaxis"
         [title]="chartOptions.title"
-    ></apx-chart>
+    ></apx-chart> -->
+    <div
+        echarts
+        [options]="echartsOptions"
+        [extentions]="echartsExtentions"
+        (chartInit)="onChartChange($event)"
+    ></div>
 </section>
